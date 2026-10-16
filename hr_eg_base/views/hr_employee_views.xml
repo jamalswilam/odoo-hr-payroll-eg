@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_form_eg" model="ir.ui.view">
+        <field name="name">hr.employee.form.eg</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='personal_information']" position="after">
+                <page name="eg_hr" string="Egypt" groups="hr.group_hr_user">
+                    <group>
+                        <group string="Identity">
+                            <field name="eg_national_id" placeholder="14 digits"/>
+                        </group>
+                        <group string="Social Insurance">
+                            <field name="eg_social_insurance_no"/>
+                            <field name="eg_insurance_start_date"/>
+                            <field name="eg_currency_id" invisible="1"/>
+                            <field name="eg_insured_salary"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_employee_filter_eg" model="ir.ui.view">
+        <field name="name">hr.employee.search.eg</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="eg_national_id" groups="hr.group_hr_user"/>
+            </field>
+        </field>
+    </record>
+</odoo>
